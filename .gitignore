@@ -1,0 +1,10 @@
+node_modules/
+.env
+.DS_Store
+dist/
+build/
+
+# User-uploaded files — never commit resumes/PDFs
+/uploads/
+/job-portal-backend/uploads/
+/job-portal-backend/uploads/resumes/
