@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { apiGet, apiPost, apiPut, apiDelete } from '../services/api.js';
+import { apiGet, apiPost, apiPut, apiDelete, API_BASE_URL } from '../services/api.js';
 import { useToast } from '../context/ToastContext.jsx';
 import NavigationBar from '../components/NavigationBar.jsx';
 import DragDropZone from '../components/DragDropZone.jsx';
@@ -71,7 +71,7 @@ const ResumeUploadPage = () => {
     // (with the auth token attached through a query-free approach isn't
     // possible for a protected route without JS, so we fetch as a blob).
     const token = localStorage.getItem('token');
-    fetch('http://localhost:5000/api/resumes/download', {
+    fetch(`${API_BASE_URL}/api/resumes/download`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {

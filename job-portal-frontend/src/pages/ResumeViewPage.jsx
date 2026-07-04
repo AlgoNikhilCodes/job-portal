@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { apiGet } from '../services/api.js';
+import { apiGet, API_BASE_URL } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import NavigationBar from '../components/NavigationBar.jsx';
@@ -30,7 +30,7 @@ const ResumeViewPage = () => {
 
   const handleDownload = () => {
     const token = localStorage.getItem('token');
-    fetch(`http://localhost:5000/api/resumes/download/${seekerId}`, {
+    fetch(`${API_BASE_URL}/api/resumes/download/${seekerId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { apiGet, apiPut } from '../services/api.js';
+import { apiGet, apiPut, API_BASE_URL } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { applyOptimisticUpdate, revertOptimisticUpdate } from '../utils/optimisticUpdates.js';
@@ -224,7 +224,7 @@ export const useKanbanBoard = (jobId) => {
 
   const handleDownloadResume = useCallback((seekerId) => {
     const token = localStorage.getItem('token');
-    fetch(`http://localhost:5000/api/resumes/download/${seekerId}`, {
+    fetch(`${API_BASE_URL}/api/resumes/download/${seekerId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
